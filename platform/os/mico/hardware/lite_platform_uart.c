@@ -27,12 +27,12 @@ static uint8_t  uart_ring_data[UART_RX_BUFFER_LEN] = {0};
 
 int lite_uart_send( char *pSendBuffer, uint32_t bufferLen)
 {
-	return MicoUartSend(UART_FOR_GPRS, pSendBuffer, bufferLen);
+	return MicoUartSend(UART_FOR_NBIOT, pSendBuffer, bufferLen);
 }
 
 int lite_uart_recv(char *pRecvBuffer, uint32_t bufferLen,  uint32_t timeOutMs)
 {
-	return MicoUartRecv(UART_FOR_GPRS, pRecvBuffer, bufferLen, timeOutMs);
+	return MicoUartRecv(UART_FOR_NBIOT, pRecvBuffer, bufferLen, timeOutMs);
 }
 
 int32_t lite_uart_init(void)
@@ -61,7 +61,7 @@ int32_t lite_uart_init(void)
 
 	//while(1);
 	ring_buffer_init(&uart_ring_buffer, (uint8_t *)uart_ring_data, UART_RX_BUFFER_LEN);
-	return MicoUartInitialize( UART_FOR_GPRS, &uart_config, &uart_ring_buffer );
+	return MicoUartInitialize( UART_FOR_NBIOT, &uart_config, &uart_ring_buffer );
 }
 
 /*
@@ -69,6 +69,6 @@ int32_t lite_uart_init(void)
 */
 int32_t lite_uart_buffer_len(void)
 {
-	return MicoUartGetLengthInBuffer(UART_FOR_GPRS);
+	return MicoUartGetLengthInBuffer(UART_FOR_NBIOT);
 }
 
