@@ -350,7 +350,6 @@ int32_t lite_phy_net_connect()
 	//check sim card is insert or not
 	os_uart_mqtt_log("cmd:%s", AT_GPRS_CHECK_SIM_CARD_FMT);
 
-	while(1);
 	loop = 0;
 	do
 	{
