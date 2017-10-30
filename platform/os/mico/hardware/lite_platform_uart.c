@@ -49,15 +49,15 @@ int32_t lite_uart_init(void)
 	MicoGpioInitialize( MICO_GPIO_POWER, OUTPUT_PUSH_PULL );
 	MicoGpioOutputHigh(MICO_GPIO_POWER);
 
-	MicoGpioInitialize( MICO_GPIO_GPRS_RST, OUTPUT_PUSH_PULL );
-	MicoGpioOutputHigh(MICO_GPIO_GPRS_RST);
-	mico_rtos_thread_msleep(100);
-	MicoGpioOutputLow(MICO_GPIO_GPRS_RST);
+    MicoGpioInitialize( MICO_GPIO_GPRS_START, OUTPUT_PUSH_PULL );
+    MicoGpioOutputHigh(MICO_GPIO_GPRS_START);
+    mico_rtos_thread_msleep(100);
+    MicoGpioOutputLow(MICO_GPIO_GPRS_START);
 
-	MicoGpioInitialize( MICO_GPIO_GPRS_START, OUTPUT_PUSH_PULL );
-	MicoGpioOutputHigh(MICO_GPIO_GPRS_START);
-	mico_rtos_thread_msleep(4000);
-	MicoGpioOutputLow(MICO_GPIO_GPRS_START);
+    MicoGpioInitialize( MICO_GPIO_GPRS_RST, OUTPUT_PUSH_PULL );
+    MicoGpioOutputHigh(MICO_GPIO_GPRS_RST);
+    mico_rtos_thread_msleep(4000);
+    MicoGpioOutputLow(MICO_GPIO_GPRS_RST);
 
 	//while(1);
 	ring_buffer_init(&uart_ring_buffer, (uint8_t *)uart_ring_data, UART_RX_BUFFER_LEN);
